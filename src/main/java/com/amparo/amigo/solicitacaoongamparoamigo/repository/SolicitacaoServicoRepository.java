@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface SolicitacaoServicoRepository extends JpaRepository<SolicitacaoServico, Integer> {
 
-    SolicitacaoServico findByIdSolicitacao(Integer solicitacaoId);
+    SolicitacaoServico findBySolicitacaoId(Integer solicitacaoId);
 }

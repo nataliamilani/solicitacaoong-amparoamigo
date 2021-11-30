@@ -17,7 +17,7 @@ public class SolicitacaoSevicoService {
 
     public SolicitacaoServico consultarServicoId(Integer solicitacaoId){
         try {
-            return repository.findByIdSolicitacao(solicitacaoId);
+            return repository.findBySolicitacaoId(solicitacaoId);
         } catch (RuntimeException runtimeException) {
             throw new SolicitacaoServicoNotFoundException("Não encontrada id da solicitacao: " + solicitacaoId);
         }
