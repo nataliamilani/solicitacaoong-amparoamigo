@@ -3,10 +3,13 @@ package com.amparo.amigo.solicitacaoongamparoamigo.domain;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 
 @Getter
 @Entity
@@ -15,7 +18,6 @@ public class SolicitacaoServico implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_solicitacao")
     private Integer solicitacaoId;
 
     private String categoria;
@@ -26,16 +28,15 @@ public class SolicitacaoServico implements Serializable {
 
     private String cidade;
 
-    @Column(name = "nome_voluntario")
     private String nomeVoluntario;
 
-    @Column(name = "razao_social_ong")
     private String razaoSocialOng;
 
     private Integer cnpj;
 
-    @Column(name = "data_criacao")
-    private LocalDateTime dataCriacao;
+    @Setter
+    @JsonProperty("data_criacao")
+    private String datacriacao = LocalDateTime.now(ZoneId.of("America/Sao_Paulo")).format(DateTimeFormatter.ofPattern("dd/MM/yyyy:HH:mm:ss"));
 
     public SolicitacaoServico() { super(); }
 
@@ -57,6 +58,7 @@ public class SolicitacaoServico implements Serializable {
         this.cnpj = cnpj;
     }
 
+    public Integer getSolicitacaoId() {return solicitacaoId;}
 
     public void setSolicitacaoId(Integer solicitacaoId) {
         this.solicitacaoId = solicitacaoId;
@@ -88,9 +90,5 @@ public class SolicitacaoServico implements Serializable {
 
     public void setCnpj(Integer cnpj) {
         this.cnpj = cnpj;
-    }
-
-    public void setDataCriacao(LocalDateTime dataCriacao) {
-        this.dataCriacao = LocalDateTime.now();
     }
 }
