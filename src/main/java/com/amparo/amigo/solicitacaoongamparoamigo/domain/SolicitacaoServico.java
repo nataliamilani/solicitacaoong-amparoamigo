@@ -49,7 +49,7 @@ public class SolicitacaoServico implements Serializable {
                                @JsonProperty("cidade") String cidade,
                                @JsonProperty("nome_voluntario") String nomeVoluntario,
                                @JsonProperty("razao_social_ong") String razaoSocialOng,
-                               @JsonProperty("cnpj") String cnpjOuCpf)
+                               @JsonProperty("CNPJ/CPF") String cnpjOuCpf)
     {
         this.categoria = categoria;
         this.servico = servico;
