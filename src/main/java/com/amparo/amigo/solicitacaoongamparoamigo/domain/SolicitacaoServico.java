@@ -32,7 +32,7 @@ public class SolicitacaoServico implements Serializable {
 
     private String razaoSocialOng;
 
-    private Integer cnpj;
+    private String cnpj;
 
     @Setter
     @JsonProperty("data_criacao")
@@ -47,7 +47,7 @@ public class SolicitacaoServico implements Serializable {
                                @JsonProperty("cidade") String cidade,
                                @JsonProperty("nome_voluntario") String nomeVoluntario,
                                @JsonProperty("razao_social_ong") String razaoSocialOng,
-                               @JsonProperty("cnpj") Integer cnpj)
+                               @JsonProperty("cnpj") String cnpj)
     {
         this.categoria = categoria;
         this.servico = servico;
@@ -55,40 +55,6 @@ public class SolicitacaoServico implements Serializable {
         this.cidade = cidade;
         this.nomeVoluntario = nomeVoluntario;
         this.razaoSocialOng = razaoSocialOng;
-        this.cnpj = cnpj;
-    }
-
-    public Integer getSolicitacaoId() {return solicitacaoId;}
-
-    public void setSolicitacaoId(Integer solicitacaoId) {
-        this.solicitacaoId = solicitacaoId;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
-    public void setServico(String servico) {
-        this.servico = servico;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
-    public void setNomeVoluntario(String nomeVoluntario) {
-        this.nomeVoluntario = nomeVoluntario;
-    }
-
-    public void setRazaoSocialOng(String razaoSocialOng) {
-        this.razaoSocialOng = razaoSocialOng;
-    }
-
-    public void setCnpj(Integer cnpj) {
         this.cnpj = cnpj;
     }
 }

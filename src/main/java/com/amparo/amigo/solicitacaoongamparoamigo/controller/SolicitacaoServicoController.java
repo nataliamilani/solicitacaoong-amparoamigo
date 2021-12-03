@@ -18,7 +18,7 @@ public class SolicitacaoServicoController {
     }
 
     @GetMapping(path = "/{solicitacaoId}")
-    public SolicitacaoServico consultarSolicitacaoId(@PathVariable("solicitaoId") Integer solicitacaoId) {
+    public SolicitacaoServico consultarSolicitacaoId(@PathVariable("solicitacaoId") Integer solicitacaoId) {
         return solicitacaoService.consultarServicoId(solicitacaoId);
     }
 }
