@@ -49,7 +49,7 @@ public class SolicitacaoServico implements Serializable {
                                @JsonProperty("cidade") String cidade,
                                @JsonProperty("nome_voluntario") String nomeVoluntario,
                                @JsonProperty("razao_social_ong") String razaoSocialOng,
-                               @JsonProperty("CNPJ/CPF") String cnpjOuCpf)
+                               @JsonProperty("cnpj_ou_cpf") String cnpjOuCpf)
     {
         this.categoria = categoria;
         this.servico = servico;
@@ -61,13 +61,11 @@ public class SolicitacaoServico implements Serializable {
     }
 
     public void setCnpjOuCpf(String cnpjOuCpf) {
+
         if (isValid(cnpjOuCpf)) {
-            System.out.println("validacao cpf ou cnpj: " + isValid(cnpjOuCpf));
-            try {
-                this.cnpjOuCpf = cnpjOuCpf;
-            } catch (RuntimeException runtimeException) {
-                throw new CnpjOuCpfInvalidoException("CPF ou CNPJ inválido: " + cnpjOuCpf);
-            }
+            this.cnpjOuCpf = cnpjOuCpf;
+        } else {
+            throw new CnpjOuCpfInvalidoException("Favor preencher um CPF ou CNPJ válido");
         }
     }
 
