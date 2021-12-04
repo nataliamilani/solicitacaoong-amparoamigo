@@ -5,6 +5,8 @@ import com.amparo.amigo.solicitacaoongamparoamigo.exceptions.SolicitacaoServicoN
 import com.amparo.amigo.solicitacaoongamparoamigo.repository.SolicitacaoServicoRepository;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
 public class SolicitacaoSevicoService {
 
@@ -15,12 +17,16 @@ public class SolicitacaoSevicoService {
         return repository.save(solicitacao);
     }
 
-    public SolicitacaoServico consultarServicoId(Integer solicitacaoId){
-        try {
-            return repository.findBySolicitacaoId(solicitacaoId);
-        } catch (RuntimeException runtimeException) {
+    public Optional<SolicitacaoServico> consultarServicoId(Integer solicitacaoId){
+
+        var consultaSolicitacaoServico = repository.findBySolicitacaoId(solicitacaoId).isPresent();
+
+        if(!consultaSolicitacaoServico){
             throw new SolicitacaoServicoNotFoundException("Não encontrada id da solicitacao: " + solicitacaoId);
         }
+
+        return repository.findBySolicitacaoId(solicitacaoId);
+
     }
 
 }

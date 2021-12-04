@@ -4,6 +4,8 @@ import com.amparo.amigo.solicitacaoongamparoamigo.domain.SolicitacaoServico;
 import com.amparo.amigo.solicitacaoongamparoamigo.service.SolicitacaoSevicoService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/solicitacao_servico")
 public class SolicitacaoServicoController {
@@ -18,7 +20,7 @@ public class SolicitacaoServicoController {
     }
 
     @GetMapping(path = "/{solicitacaoId}")
-    public SolicitacaoServico consultarSolicitacaoId(@PathVariable("solicitacaoId") Integer solicitacaoId) {
+    public Optional<SolicitacaoServico> consultarSolicitacaoId(@PathVariable("solicitacaoId") Integer solicitacaoId) {
         return solicitacaoService.consultarServicoId(solicitacaoId);
     }
 }
