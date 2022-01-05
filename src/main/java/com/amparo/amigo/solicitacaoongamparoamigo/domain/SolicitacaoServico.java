@@ -22,48 +22,52 @@ public class SolicitacaoServico implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer solicitacaoId;
 
-    private String categoria;
+    private Integer voluntarioId;
 
-    private String servico;
+    private String categoria;
 
     private String estado;
 
     private String cidade;
 
-    private String nomeVoluntario;
+    private String razaoSocial;
 
-    private String razaoSocialOng;
+    private String cpfCnpj;
 
-    private String cnpjOuCpf;
+    private String responsavel;
+
+    private String digaAlgoAoVoluntario;
 
     @Setter
-    @JsonProperty("data_criacao")
+    @JsonProperty("dataCriacao")
     private String datacriacao = LocalDateTime.now(ZoneId.of("America/Sao_Paulo")).format(DateTimeFormatter.ofPattern("dd/MM/yyyy:HH:mm:ss"));
 
     public SolicitacaoServico() { super(); }
 
     @JsonCreator
-    public SolicitacaoServico( @JsonProperty("categoria") String categoria,
-                               @JsonProperty("servico") String servico,
+    public SolicitacaoServico( @JsonProperty("voluntarioId") Integer voluntarioId,
+                               @JsonProperty("categoria") String categoria,
                                @JsonProperty("estado") String estado,
                                @JsonProperty("cidade") String cidade,
-                               @JsonProperty("nome_voluntario") String nomeVoluntario,
-                               @JsonProperty("razao_social_ong") String razaoSocialOng,
-                               @JsonProperty("cnpj_ou_cpf") String cnpjOuCpf)
+                               @JsonProperty("razaoSocial") String razaoSocial,
+                               @JsonProperty("cpfCnpj") String cpfCnpj,
+                               @JsonProperty("responsavel") String responsavel,
+                               @JsonProperty("digaAlgoAoVoluntario") String digaAlgoAoVoluntario)
     {
+        this.voluntarioId = voluntarioId;
         this.categoria = categoria;
-        this.servico = servico;
         this.estado = estado;
         this.cidade = cidade;
-        this.nomeVoluntario = nomeVoluntario;
-        this.razaoSocialOng = razaoSocialOng;
-        setCnpjOuCpf(cnpjOuCpf);
+        this.razaoSocial = razaoSocial;
+        setCpfCnpj(cpfCnpj);
+        this.responsavel = responsavel;
+        this.digaAlgoAoVoluntario = digaAlgoAoVoluntario;
     }
 
-    public void setCnpjOuCpf(String cnpjOuCpf) {
+    public void setCpfCnpj(String cpfCnpj) {
 
-        if (isValid(cnpjOuCpf)) {
-            this.cnpjOuCpf = cnpjOuCpf;
+        if (isValid(cpfCnpj)) {
+            this.cpfCnpj = cpfCnpj;
         } else {
             throw new CnpjOuCpfInvalidoException("Favor preencher um CPF ou CNPJ válido");
         }
