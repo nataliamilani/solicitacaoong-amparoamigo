@@ -16,12 +16,12 @@ services:
       - eureka:eureka
       - prometheus:prometheus
     depends_on:
-      - db
+      - dbsolicitacao
     links:
-      - db
+      - dbsolicitacao
     restart: on-failure
 
-  db:
+  dbsolicitacao:
     image: mysql
     container_name: dbsolicitacao
     hostname: dbsolicitacao
