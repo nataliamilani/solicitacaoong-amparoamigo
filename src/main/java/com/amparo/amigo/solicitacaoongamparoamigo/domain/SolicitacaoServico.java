@@ -36,6 +36,8 @@ public class SolicitacaoServico implements Serializable {
 
     private String responsavel;
 
+    private String telefone;
+
     private String digaAlgoAoVoluntario;
 
     @Setter
@@ -52,6 +54,7 @@ public class SolicitacaoServico implements Serializable {
                                @JsonProperty("razaoSocial") String razaoSocial,
                                @JsonProperty("cpfCnpj") String cpfCnpj,
                                @JsonProperty("responsavel") String responsavel,
+                               @JsonProperty("telefone") String telefone,
                                @JsonProperty("digaAlgoAoVoluntario") String digaAlgoAoVoluntario)
     {
         this.voluntarioId = voluntarioId;
@@ -61,6 +64,7 @@ public class SolicitacaoServico implements Serializable {
         this.razaoSocial = razaoSocial;
         setCpfCnpj(cpfCnpj);
         this.responsavel = responsavel;
+        this.telefone = telefone;
         this.digaAlgoAoVoluntario = digaAlgoAoVoluntario;
     }
 
